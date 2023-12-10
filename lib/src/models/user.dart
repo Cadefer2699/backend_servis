@@ -35,16 +35,29 @@ class User {
     this.roles
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-    id: json["id"] is int ? json['id'].toString() : json["id"],
-    name: json["name"],
-    lastname: json["lastname"],
-    email: json["email"],
-    phone: json["phone"],
-    password: json["password"],
-    sessionToken: json["session_token"],
-    image: json["image"],
-    roles: json["roles"] == null ? [] : List<Rol>.from(json['roles'].map((model) => Rol.fromJson(model))) ?? [],
+  factory User.fromJson(Map<String, dynamic> json) {
+
+    // Manejo de roles
+    List<dynamic>? rolesData = json['roles'];
+
+    List<Rol> convertedRoles = rolesData != null && rolesData is List
+    ? rolesData.map((rolesJson) => Rol.fromJson(rolesJson)).toList()
+    : [];
+
+    return User(
+      id: json["id"] is int ? json['id'].toString() : json["id"],
+      name: json["name"],
+      lastname: json["lastname"],
+      email: json["email"],
+      phone: json["phone"],
+      password: json["password"],
+      sessionToken: json["session_token"],
+      image: json["image"],
+      roles: convertedRoles,
+    ); 
+  }
+
+    //roles: json["roles"] == null ? [] : List<Rol>.from(json['roles'].map((model) => Rol.fromJson(model))) ?? [],
     /*si me devuelven null(campo_vacio) devuelveme un campo vacio ? []
     : Si no es el caso, creamos una lista del campo Rol .from(json[´roles´],
     queremos obtener los roles .map (es un metodo), despues de model, vamos
@@ -52,7 +65,7 @@ class User {
     conjunto vacio 
     */
 
-  );
+
 
   Map<String, dynamic> toJson() => {
     "id": id,

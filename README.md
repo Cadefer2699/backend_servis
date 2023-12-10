@@ -1,16 +1,13 @@
 # rolusuario
 
-A new Flutter project.
+DESARROLLO APP SERVIS ROLES... 
+#01 Esta es una parte de desarrollo Servis -> Roles
 
-## Getting Started
+Esta app tiene la funcionalidad de escoger los roles de los usuarios (Cliente / Trabajador)
 
-This project is a starting point for a Flutter application.
+Pero se muestra un error al momento de escoger el rol Cliente. 
 
-A few resources to get you started if this is your first Flutter project:
+El error es el siguiente: 
+type 'Rol' is not a subtype of
+type 'Map<String, dynamic>'
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
